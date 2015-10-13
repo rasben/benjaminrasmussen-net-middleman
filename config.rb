@@ -43,6 +43,7 @@ page "/blog/tag*", :layout => "layout_blog"
 page "/20*", :layout => "layout_blog"
 
 activate :directory_indexes
+ignore 'script/*'
 
 ###
 # Compass

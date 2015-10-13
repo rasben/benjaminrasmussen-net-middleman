@@ -18,6 +18,7 @@
 /.cache
 /node_modules
 /fontsqurriel
+/source/fontsqurriel
 /qurriel
 *.woff2
 *.woff

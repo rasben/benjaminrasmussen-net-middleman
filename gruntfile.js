@@ -10,7 +10,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-inline');
   grunt.loadNpmTasks('grunt-contrib-compass');
 
-  grunt.registerTask('build', ['clean:pre', 'copy:prebuild', 'copy:root_assets', 'compass', 'inline', 'middleman', 'copy:js', 'replace', 'image_resize', 'clean:post']);
+  grunt.registerTask('build', ['clean:pre', 'copy:prebuild', 'copy:root_assets', 'compass', 'inline', 'middleman', 'copy:js', 'replace', 'image_resize', 'copy:scripts', 'clean:post']);
 
   grunt.initConfig({
     copy: {
@@ -28,7 +28,13 @@ module.exports = function(grunt) {
         dest: 'build/js/',
         flatten: false
       },
-
+      scripts: {
+        expand: true,
+        cwd: 'prebuild/script/',
+        src: '**',
+        dest: 'build/script/',
+        flatten: false
+      },
       root_assets: {
         expand: true,
         cwd: 'prebuild/root_assets',
