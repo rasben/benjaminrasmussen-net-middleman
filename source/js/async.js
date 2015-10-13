@@ -345,7 +345,7 @@ $(document).ready(function(){
 
         var that = this
         $.ajax({
-          url: "script/captcha/captcha-markup-" + state + ".html",
+          url: "script/captcha/templates/captcha-markup-" + state + ".html",
           context: document.body,
           success: function(response){
             $(that.placeholder).html(response);
@@ -372,7 +372,7 @@ $(document).ready(function(){
 
     _showForm : function(address, phone, email, state) {
       $.ajax({
-        url: "script/captcha/card-markup.html",
+        url: "script/captcha/templates/card-markup.html",
         context: document.body,
         success: function(response) {
           $('.js-contact-modal-placeholder').html(response);
@@ -464,12 +464,6 @@ $(document).ready(function(){
 
 
 });
-
-
-
-
-
-
 
 function contactFinalRecaptchaCallback() {
  rasben.ContactModal.prototype._checkCaptcha('final');
