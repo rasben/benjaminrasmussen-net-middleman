@@ -52,7 +52,7 @@ module.exports = function(grunt) {
           crop: true,
           overwrite: true
         },
-        src: 'prebuild/blog/images/prebuild/*',
+        src: 'prebuild/blog/images/source/*',
         dest: 'build/blog/images/teaser-small/'          
       },
       full_body : {
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
           crop: true,
           overwrite: true
         },
-        src: 'prebuild/blog/images/prebuild/*',
+        src: 'prebuild/blog/images/source/*',
         dest: 'build/blog/images/full_body/'          
       }
     },
