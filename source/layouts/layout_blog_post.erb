@@ -1,0 +1,48 @@
+<% wrap_layout :layout_blog do %>
+<article class="blog__post">
+  <h1 class="blog__title"><%= current_article.title %></h1>
+  <div class="blog__post__meta">
+    <span class="blog__post__date"><%= current_article.date.strftime('%e. %B, %Y') %></span>
+    <ul class="blog__tags">
+      <% current_article.tags.each_with_index do |tag, i| %>
+      <a href="<%= global_path + tag_path(tag) %>"><li class="blog__tag"><%= tag %></li></a>
+      <% end %>
+    </ul>
+  </div>
+
+    <% if current_article.data.images? %>
+    <div class="js-gallery blog__gallery">
+      <ul class="js-gallery-items blog__gallery__items">
+        <% current_article.data.images.each_with_index do |image, i| %>
+        <li class="js-gallery-item blog__gallery__item">
+          <img src="<%= global_path + '/blog/images/full_body/' + image.path %>" class="blog__gallery__image" />
+          <p class="blog__gallery__caption"><b><%= image.title %></b> - <%= image.caption %></p>
+        </li>
+        <% end %>
+      </ul>
+
+      <% if current_article.data.images.count > 1 %>
+      <a href="#" class="js-gallery-left blog__gallery__control blog__gallery__control--left"></a>
+      <a href="#" class="js-gallery-right blog__gallery__control blog__gallery__control--right"></a>
+      <% end %>
+    </div>
+    <% end %>
+
+    <% if current_article.data.videos.youtube.empty? %>
+    <% current_article.data.videos.youtube.each_with_index do |youtube, i| %>
+    <div class="blog__youtube">
+      <iframe src="https://www.youtube.com/embed/<%= youtube.vid %>" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <% end %>
+    <% end %>
+  <div class="blog__post__content">
+    <%= yield %>
+  </div>
+</article>
+<% current_article.data.js.each_with_index do |js, i| %>
+<script type="text/javascript" src="<%= global_path + '/' + js.path %>" defer></script>
+<% end %>
+<% current_article.data.css.each_with_index do |css, i| %>
+<link href="<%= global_path + '/' + css.path %>" rel="stylesheet" type="text/css" />
+<% end %>
+<% end %>

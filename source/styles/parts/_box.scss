@@ -1,0 +1,21 @@
+.box {
+  display: inline-block;
+  padding: 3px 20px 3px 20px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+
+.box--light {
+  color: $color__background;
+
+  &:link,
+  &:visited,
+  &:active {
+    color:$color__background;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $color__background--hover;
+  }
+}

@@ -1,0 +1,22 @@
+<ul class="blog__posts">
+<% page_articles.each_with_index do |article, i| %>
+  <li class="blog__post">
+    <div class="blog__teaser <% if article.data.image_teaser? %> blog__teaser--with-image<% end %>">
+      <% if article.data.image_teaser? %>
+      <div class="blog__teaser__image">
+        <a href="<%= global_path + '/blog/post/' + article.slug %>"><img src="<%= global_path + '/blog/images/teaser-small/' + article.data.image_teaser %>" /></a>
+      </div>
+      <% end %>
+      <div class="blog__teaser__content">
+        <h3 class="blog__teaser__title"><a href="<%= global_path + '/blog/post/' + article.slug %>"><%= article.title %></a></h3>
+        <span class="blog__teaser__date"><%= article.date.strftime('%e. %B, %Y') %></span>
+        <ul class="blog__tags">
+
+        <% article.tags.each_with_index do |tag, i| %>
+          <a href="<%= global_path + tag_path(tag) %>"><li class="blog__tag"><%= tag %></li></a>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </li>
+<% end %>

@@ -1,0 +1,96 @@
+.page.final {
+  background: #e9e9e9;
+  position: relative;
+  z-index: 1;
+}
+
+.final .page__body {
+  padding-bottom: 120px;
+}
+
+.final__text-body {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final__mermaid {
+  margin-top: 20px;
+  height: 275px;
+  width: auto;
+}
+
+.final__social__items {
+  list-style: none;
+  font-size: 0;
+}
+
+.final__social__item {
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+.final__social__link {
+  width: 50px;
+  height: 50px;
+  display: block;
+
+  &:before {
+    font-size: 35px;
+  }
+}
+
+.final__social__link--linkedin {
+  &:before {
+    @include icon($icon__linkedin);
+  }
+}
+
+.final__social__link--facebook {
+  &:before {
+    @include icon($icon__facebook);
+  }
+}
+
+.final__social__link--github {
+  &:before {
+    @include icon($icon__github);
+  }
+}
+
+.final__social__link--vimeo {
+  &:before {
+    @include icon($icon__vimeo);
+  }
+}
+
+.final__social__link--skype {
+  &:before {
+    @include icon($icon__skype);
+  }
+}
+
+.final__social__link--youtube {
+  &:before {
+    @include icon($icon__youtube);
+  }
+}
+
+.final__social__link--reddit {
+  &:before {
+    @include icon($icon__reddit);
+  }
+}
+
+.final__social__link--codepen {
+  &:before {
+    @include icon($icon__codepen);
+  }
+}
+
+@media (min-height: 750px) and (min-width: 710px) {
+  .final .page__body {
+    padding-bottom: 20px;
+  }
+}

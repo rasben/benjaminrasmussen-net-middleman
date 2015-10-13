@@ -1,0 +1,19 @@
+.header {
+  width: 100%;
+  height: $header__height ;
+  background: $color__text;
+  color: $color__background;
+  position: fixed;
+  z-index: 5;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.body__header-small {
+  .header {
+    height: $header__height--small + 1px; // Wonderful Windows..
+  }
+}

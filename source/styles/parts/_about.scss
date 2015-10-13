@@ -1,0 +1,145 @@
+
+.about .page__header {
+  background: $color__about;
+  border-color: $color__front__footer;
+}
+
+.about .page__body {
+  padding-bottom: 40px;
+}
+
+.about .page__header__text-body {
+  margin-bottom: 0;
+  min-height: 100px;
+}
+
+.about__mini-teaser {
+  .mini-teaser__item {
+    width: 33.33%;
+  }
+
+  .mini-teaser__circle {
+  background: $color__about--light;
+
+    &:hover {
+      background-color: darken($color__about--light, 5%);
+    }
+  }
+}
+
+.about__box {
+  margin-top: 20px;
+  background: $color__about--light;
+
+  &:hover {
+    background-color: darken($color__about--light, 5%)
+  }
+}
+
+.about .page__text-header {
+  font-size: 30px;
+}
+
+.about__text-subheader {
+  margin-bottom: 5px;
+}
+
+.about__hr {
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  height: 1px;
+  background: #d1d1d1;
+}
+
+.about .page__text-body {
+  margin: 0;
+  text-align: center;
+}
+
+.about__text-mini {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.about__header__extra-body {
+  padding-top: 40px;
+  padding-bottom: 0;
+}
+
+.about__me {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+
+}
+
+.about__me__image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid $color__background;
+}
+
+.about__me__tagline {
+  height: auto;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: -25px;
+  font-size: 14px;
+
+  &:before {
+    @include icon($icon__arrow-smart);
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+      font-size: 24px;
+  }
+}
+
+.about__peytz-logo {
+  min-height: 300px;
+}
+
+@media (min-width: 550px) and (min-height: 885px) {
+  .about .page__body {
+    padding-bottom: 80px;
+  }
+}
+
+@media (min-width: 741px) {
+  .about__me {
+    display: block;
+  }
+
+  .about .page__header__text-body {
+    padding-left: 150px;
+  }
+}
+
+@media (min-width: 960px) and (min-height: 885px) {
+  .about.extra--overlay {
+    .page__header {
+      position: relative;
+      z-index: 4;
+    }
+
+    .page__body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+  }
+}

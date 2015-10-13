@@ -1,0 +1,21 @@
+<h1 class="blog__title">Latest blog posts</h1>
+<ul class="blog__posts">
+  <% blog.tags.each do |tag, articles| %>
+  <li class="blog__post">
+    <div class="blog__teaser">
+      <div class="blog__teaser__content">
+        <h3 class="blog__teaser__title"><%= tag %></h3>
+        <ul class="blog__tags blog__tags--articles">
+          <% articles.each do |article| %>
+            <a href="<%= article.url %>">
+              <li class="blog__tag">
+                <%= article.title %>
+              </li>
+            </a>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

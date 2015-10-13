@@ -1,0 +1,47 @@
+.history .page__header {
+  background: $color__history;
+  border-color: $color__background;
+}
+
+.history {
+  .page__body {
+    padding: 20px;
+    padding-bottom: 80px;
+  }
+}
+
+.history__header__extra-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.history__box {
+  margin-top: 20px;
+  background: $color__history--light;
+
+  &:hover {
+    background-color: darken($color__history--light, 5%)
+  }
+}
+
+@media (min-width: 960px) and (min-height: 885px) {
+  .history.extra--overlay {
+    .page__header {
+      position: relative;
+      z-index: 4;
+    }
+
+    .page__body {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+  }
+}
+
+@media (min-height: 750px) and (min-width: 710px) {
+  .history .page__body {
+    padding-bottom: 20px;
+  }
+}

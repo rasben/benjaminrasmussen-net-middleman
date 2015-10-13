@@ -1,0 +1,113 @@
+.front {
+  background: $color__front__header;
+  -moz-transition: 9999999999999999999999999999999999999999999999999999999s;
+  -ms-transition: 9999999999999999999999999999999999999999999999999999999s;
+  -o-transition: 9999999999999999999999999999999999999999999999999999999s;
+  -webkit-transition: 9999999999999999999999999999999999999999999999999999999s;
+  transition: 9999999999999999999999999999999999999999999999999999999s;
+  height: 100%;
+  height: 100vh;
+}
+
+.front__header {
+  width: 100%;
+  height: 35%;
+  position: relative;
+}
+
+.front__header__body {
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.front__header__title {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.front__header__subtitle {
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+.front__skyline {
+  width: 100%;
+
+  height: 40%;
+  overflow: hidden;
+}
+
+.front__skyline__buildings {
+  height: 74.0181268882%;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+
+}
+
+.front__skyline__pier {
+  height: 26%;
+  width: 100%;
+  background-color: #7e512a;
+  background-image: url('#{$path}/images/skyline_pier.png');
+  background-size: auto 100%;
+}
+
+
+.front__footer {
+  width: 100%;
+  height: 25%;
+  background: $color__front__footer;
+  position: relative;
+  z-index: 1;
+
+  &:after {
+    content: '';
+    height: 10%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: darken($color__front__footer, 7%);
+  }
+}
+
+
+@media (min-width: 500px) and (min-height: 500px) {
+  .front__header__body {
+    bottom: $padding__height;
+  }
+
+  .front__header__title {
+    font-size: 35px;
+    margin-bottom: $padding__height * 0.5;
+  }
+
+  .front__header__subtitle {
+    font-size: 22px;
+    line-height: 22px;
+
+  }
+}
+
+@media (min-width: 700px) and (min-height: 680px) {
+
+  .front__header__title {
+    font-size: 45px;
+    margin-bottom: $padding__height * 0.5;
+  }
+
+  .front__header__subtitle {
+    font-size: 30px;
+    line-height: 30px;
+
+  }
+}

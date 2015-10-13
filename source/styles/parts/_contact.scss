@@ -1,0 +1,161 @@
+.contact__header {
+  background: $color__contact;
+}
+
+.contact__captcha-element > div {
+  display: inline-block;
+} 
+
+
+.contact__captcha-meta {
+  font-size: 14px;
+  margin: 0;
+}
+
+.contact__captcha-header {
+  font-size: 30px;
+  line-height: 30px;
+  margin: 10px 0 30px 0;
+}
+
+.contact__card__name,
+.contact__card__meta {
+  position: relative;
+  text-align: left;
+  display: block;
+  color: $color__background;
+  margin: 0;
+  margin-left: 95px;
+  font-size: 14px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    left: -110px;
+    right: -15px;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: $color__text;
+    z-index: -1;
+  }
+}
+
+.contact__card__name {
+  padding: 5px 0 5px 0;
+  font-size: 22px;
+  margin-top: 30px;
+
+  &:before {
+    background: $color__front__footer;
+  }
+
+   &:after {
+    content: '';
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    left: -103px;
+    top: -17px;
+    background-color: $color__background;
+    border: 4px solid $color__text--hover;
+    background-image: url('#{$path}/images/me.jpg');
+    background-size: cover;
+  } 
+}
+
+.contact__card__items {
+  margin-top: 35px;
+  margin-bottom: 0;
+  list-style: none;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 35px;
+}
+
+.contact__card__item {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 13px;
+
+  &:before {
+    position: absolute;
+    left: -30px;
+    top: 4px;
+    font-size: 16px;
+  }
+}
+
+.contact__language--en {
+  display: none;
+}
+
+.is-en {
+  .contact__language--da {
+    display: none;
+  }
+
+  .contact__language--en {
+    display: block;
+  }
+}
+
+.contact__card__item--address {
+  &:before {
+    @include icon($icon__address);
+  }
+}
+
+.contact__card__item--phone {
+  &:before {
+    @include icon($icon__phone);
+  }
+}
+
+.contact__card__item--email {
+  margin-bottom: 0;
+
+  &:before {
+    @include icon($icon__email);
+  }
+}
+
+@media (min-width: 550px) {
+  .contact__card__item {
+    font-size: 16px;
+  }
+
+  .contact__captcha-header {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .contact__card__items {
+    padding-left: 70px;
+  }
+
+  .contact__card__name {
+    padding: 15px 0 15px 0;
+    font-size: 26px;
+
+    &:after {
+      height: 100px;
+      width: 100px;
+      left: -130px;
+      top: -18px;
+      border: 8px solid $color__text--hover;
+    }
+  }
+
+  .contact__card__name,
+  .contact__card__meta {
+    margin-left: 160px;
+  }
+
+  .contact__card__name,
+  .contact__card__meta {
+    &:before {
+      left: -175px;
+    }
+  }
+}

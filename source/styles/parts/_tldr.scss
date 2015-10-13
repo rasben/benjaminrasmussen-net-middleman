@@ -1,0 +1,102 @@
+.page.tldr {
+  display: none;
+  background-color: $color__text;
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+
+.is-tldr-anim {
+  .tldr {
+    display: block;
+  }
+}
+
+.is-tldr {
+  .page {
+    display: none;
+  }
+
+  .tldr {
+    display: block;
+  }
+}
+
+.tldr__table {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border: 1px dashed $color__background;
+  border-bottom: 0;
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.tldr__td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px 5px 10px;
+}
+
+.tldr__td__title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tldr__td__first {
+  font-weight: bold;
+  border-right: 1px dashed $color__background;
+}
+
+.tldr__tr {
+  display: block;
+  position: relative;
+  padding-left: 5px;
+  border-bottom: 1px dashed $color__background;
+
+}
+
+.tldr__td {
+  padding-left: 7px;
+
+}
+
+.tldr__td__first{
+  width: 100px;
+  position: relative;
+  word-break: break-word;
+}
+
+.tldr__educations {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tldr__education {
+  margin-bottom: 10px;
+}
+
+.tldr__education__year {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+}
+
+.tldr__education__title {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 670px) {
+  .tldr__table {
+    width: 650px;
+  }
+
+  .tldr__td__first {
+    width: 220px;
+  }
+}

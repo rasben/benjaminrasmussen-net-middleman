@@ -1,0 +1,141 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100vh;
+  background: $color__background;
+  text-align: center;
+}
+
+.page__body {
+  overflow: hidden;
+  padding-top: $padding__height;
+  padding-bottom: $padding__height;
+
+  padding-left: $padding__width * 0.5;
+  padding-right: $padding__width * 0.5;
+}
+
+.page__header {
+  padding-top: $padding__height * 1.5;
+  padding-bottom: $padding__height;
+  border-top: $header__height solid $color__background;
+  padding-left: $padding__width * 0.5;
+  padding-right: $padding__width * 0.5;
+}
+
+.body__header-small {
+  .page__header {
+    border-width: $header__height--small;
+  }
+}
+
+.page__header__body {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page__header__text-body,
+.page__header__extra-body {
+  text-align: left;
+}
+
+.page__header__extra-body {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+.page__header__text-header {
+  margin-top: 0;
+  margin-bottom: $padding__height * 1.5;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.page__header__extra {
+  height: 0;
+  overflow: hidden;
+}
+
+.extra.is-open {
+  .page__header__extra {
+    height: auto;
+  }
+}
+
+.page__text-header {
+  margin-top: 0;
+  margin-bottom: $padding__height;
+}
+
+.page__text-body {
+  text-align: left;
+}
+
+.page__button__scroll {
+  position: absolute;
+  display: inline-block;
+  z-index: 5;
+  margin-left: -20px;
+  margin-right: auto;
+  bottom: 40px;
+  padding-left: 2px;
+  cursor: pointer;
+  font-size: 56px;
+
+  &:before {
+    position: relative;
+    margin-left: 1px;
+
+    @include icon($icon__circle-down);
+  }
+
+  -webkit-animation-name: Floatingx;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: Floating;
+  -moz-animation-duration: 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+}
+
+.page__button__scroll--reverse {
+  &:before {
+    @include icon($icon__circle-up);
+  }
+}
+
+
+.page__button__scroll--small {
+  font-size: 40px;
+}
+
+@-webkit-keyframes Floatingx{
+  from {-webkit-transform:translate(0, 0px);}
+  65% {-webkit-transform:translate(0, 14px);}
+  to {-webkit-transform: translate(0, -0px);}    
+}
+    
+@-moz-keyframes Floating{
+  from {-moz-transform:translate(0, 0px);}
+  65% {-moz-transform:translate(0, 14px);}
+  to {-moz-transform: translate(0, -0px);}    
+}
+
+
+@media (min-width: $grid__max) {
+  .page__body {
+    width: $grid__max;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page__header__body {
+    width: $grid__min;
+  }
+}

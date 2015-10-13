@@ -1,0 +1,80 @@
+$path: '';
+
+$color__background: #f9f9f9;
+$color__background--hover: darken($color__background, 15%);
+$color__text: #454545;
+$color__text--hover: darken($color__text, 20%);
+$color__active: #f88218;
+
+$color__front__header: #c5e2f0;
+$color__front__footer: #4491b7;
+
+$color__about: #256583;
+$color__about--light: #5a8aa1;
+
+$color__skills: #22797f;
+$color__skills--light: #799d74;
+
+$color__history: #398c74;
+$color__history--light: #4fb194;
+
+$color__contact: #929191;
+$color__contact--light: #bcbcbc;
+
+$color__blog: #256583;
+$color__blog--light: #5a8aa1;
+
+$header__height: 0;
+$header__height--small: 0;
+
+$grid__min: 720px;
+$grid__max: 960px;
+
+$padding__height: 20px;
+$padding__width: 40px;
+
+$break__min-height: 850px;
+
+$icon__circle: '\e610';
+$icon__circle-down: '\e60e';
+$icon__circle-up: '\e60c';
+$icon__circle--right: '\e60d';
+$icon__circle--left: '\e60f';
+
+$icon__plus: '\e608';
+$icon__minus: '\e609';
+$icon__cross: '\e60a';
+$icon__arrow-smart: '\e61e';
+$icon__fastforward: '\e607';
+$icon__rocket: '\e623';
+
+$icon__linkedin: '\e61c';
+$icon__reddit: '\e621';
+$icon__paypal: '\e622';
+$icon__github: '\e61a';
+$icon__github-alt: '\e619';
+$icon__youtube: '\e616';
+$icon__twitter: '\e615';
+$icon__vimeo: '\e617';
+$icon__skype: '\e61b';
+$icon__facebook: '\e614';
+$icon__googledrive: '\e613';
+$icon__codepen: '\e64f';
+$icon__phone: '\e64b';
+$icon__address: '\e64a';
+$icon__email: '\e64c';
+
+@mixin icon($icon) {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: $icon;
+} 

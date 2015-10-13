@@ -1,0 +1,49 @@
+.extra {
+  .extra__button__title--open {
+    display: none;
+  }
+}
+
+.extra__button {
+  cursor: pointer;
+  position: relative;
+  padding-left: 33px;
+
+
+  &:before {
+    @include icon($icon__plus);
+    position: absolute;
+    left: 10px;
+    top: 9px;
+    font-size: 13px;
+
+    -moz-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+  }
+}
+
+.extra.is-open {
+  .extra__button {
+    &:before {
+      -webkit-transform: rotate(45deg); 
+      -moz-transform: rotate(45deg);
+      //todo the rest?
+    }
+  }
+
+  .extra__continue-call {
+    display: none;
+  }
+    
+  .extra__button__title {
+    display: none;
+
+  }
+
+  .extra__button__title--open {
+    display: block;
+  }
+}
+
