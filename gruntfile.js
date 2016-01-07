@@ -82,7 +82,8 @@ module.exports = function(grunt) {
       },
       build: {
         options: {
-          command: "build"
+          command: "build",
+          verbose: true
         }
       }
     },

@@ -4,6 +4,7 @@
 
 set :source, 'prebuild'
 set :global_path, ''
+set :assets_path, '/'
 
 # Time.zone = "UTC"
 
