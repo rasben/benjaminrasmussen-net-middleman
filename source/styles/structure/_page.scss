@@ -93,6 +93,7 @@
     @include icon($icon__circle-down);
   }
 
+  transform: translate3d(0,0,0);
   -webkit-animation-name: Floatingx;
   -webkit-animation-duration: 3s;
   -webkit-animation-iteration-count: infinite;
