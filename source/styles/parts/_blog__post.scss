@@ -29,6 +29,33 @@
   }
 }
 
+.blog__code-command {
+  padding: 10px 10px 10px 50px;
+  position: relative;
+  color: $color__background;
+  background: #272822;
+  display: block;
+
+  &:after {
+    content: '$';
+    position: absolute;
+    left: 14px;
+    top: 11px;
+    font-size: 25px;
+    color: #999;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: $color__text--hover;
+  }
+}
+
 
 .blog__blockquote {
   background: #eee;

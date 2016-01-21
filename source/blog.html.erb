@@ -6,7 +6,7 @@ per_page: 8
 <h1 class="blog__title">Latest blog posts</h1>
 
 <%= partial "blog_list_full" %>
-<% if page_end > 1 %>
+<% if page_end > 8 %>
 <div class="blog__pager text__light">
   <% if prev_page %>
   <a href="<%= global_path + prev_page.url %>" class="blog__pager__prev">Newer</a>
