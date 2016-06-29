@@ -9,8 +9,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-fail');
   grunt.loadNpmTasks('grunt-inline');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('build', ['clean:pre', 'copy:prebuild', 'copy:root_assets', 'compass', 'inline', 'middleman', 'copy:js', 'replace', 'image_resize', 'copy:scripts', 'clean:post']);
+  grunt.registerTask('build', ['clean:pre', 'copy:prebuild', 'copy:root_assets', 'compass', 'inline', 'middleman', 'uglify', 'copy:js', 'replace', 'image_resize', 'copy:scripts', 'clean:post']);
+  grunt.registerTask('buildjs', ['copy:jsbypass1', 'uglify', 'copy:jsbypass2']);
 
   grunt.initConfig({
     copy: {
@@ -22,6 +24,20 @@ module.exports = function(grunt) {
         flatten: false
       },
       js: {
+        expand: true,
+        cwd: 'prebuild/js/',
+        src: '**',
+        dest: 'build/js/',
+        flatten: false
+      },
+      jsbypass1: {
+        expand: true,
+        cwd: 'source/js/',
+        src: '**',
+        dest: 'prebuild/js/',
+        flatten: false
+      },
+      jsbypass2: {
         expand: true,
         cwd: 'prebuild/js/',
         src: '**',
@@ -178,6 +194,13 @@ module.exports = function(grunt) {
       }
     },
 
+    uglify: {
+      js: {
+        files: {
+          'prebuild/js/async.min.js': ['prebuild/js/async.js']
+        }
+      }
+    }
 
 
   })
