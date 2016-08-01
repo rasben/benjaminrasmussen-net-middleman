@@ -108,8 +108,13 @@
   }
 }
 
-.about__peytz-logo {
+.about__company-logo {
   min-height: 300px;
+}
+
+.about__company-title {
+  font-size: 45px;
+  font-weight: bold;
 }
 
 @media (min-width: 550px) and (min-height: 885px) {

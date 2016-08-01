@@ -298,12 +298,15 @@ $(document).ready(function(){
     _attach : function() {
       this.modalBody = this.element.find('.js-contact-modal-body');
       this.placeholder = this.element.find('.js-contact-modal-placeholder');
+      this.contactModalOpen = false;
 
       this.element.find('.js-contact-modal-show').on('click',this.show.bind(this));
       this.element.find('.js-contact-modal-hide').on('click',this.hide.bind(this));
     },
 
     show : function(e) {
+      this.contactModalOpen = true;
+
       this._showCaptcha();
       //todo - is this missing other places?
       e.preventDefault();
@@ -317,6 +320,7 @@ $(document).ready(function(){
       setTimeout(function(){        
         $(that.modalBody).removeClass('is-anim');
       }, 800); 
+
     },
 
     hide : function(e) {
@@ -324,16 +328,20 @@ $(document).ready(function(){
       $(this.modalBody).addClass('is-anim');
       $(this.modalBody).removeClass('is-active');
 
-      // Fix the 'this' issue
       var that = this;
 
       setTimeout(function(){
         $(that.modalBody).removeClass('is-anim');
       }, 800);      
+
+      this.contactModalOpen = false;
+
+      clearInterval(this.checkCaptchaInterval);
+
+
     },
 
     _showCaptcha : function() {
-
       if (!($(this.element)).hasClass('is-completed')) {
         if ($(this.element).hasClass('js-final')) {
           var state = 'final';
@@ -345,29 +353,52 @@ $(document).ready(function(){
 
         var that = this
         $.ajax({
-          url: "script/captcha/templates/captcha-markup-" + state + ".html",
+          url: "script/captcha/templates/captcha-markup.html",
           context: document.body,
           success: function(response){
             $(that.placeholder).html(response);
           }
         });
       }
+
+      this._checkCaptcha();
     },
 
     _checkCaptcha : function(state) {
-      $.ajax({
-       type: "POST",
-       url: 'script/captcha/',
-       data: $('.' + state +' .js-contact-captcha').serialize(), // serializes the form's elements.
-       success: function(data)
-       {
-        var response = JSON.parse(data);
+      // TODO: Clean this up with a reCaptcha callback,
+      // instead of this awful hack.
+      var that = this;
 
-        if (response.success === true) {
-          rasben.ContactModal.prototype._showForm(response.address, response.phone, response.email, state);
+      this.checkCaptchaInterval = setInterval(function() {
+        grecaptchaResponse = grecaptcha.getResponse();
+
+        if (grecaptchaResponse) {
+
+          var interval = this;
+          $.post(
+            "script/captcha/",
+            { "g-recaptcha-response": grecaptchaResponse },
+            function(data) {
+
+              var response = JSON.parse(data);
+
+              if (response.success === true) {
+                clearInterval(interval);
+              }
+
+              that._showForm(response.address, response.phone, response.email, state);
+
+            }
+          );
+
         }
-       }
-      });
+      }, 500);
+
+      var that = this;
+      // Fallback, to stop the interval.
+      setTimeout( function() { 
+        clearInterval(that.checkCaptchaInterval);
+      }, 60000);
     },
 
     _showForm : function(address, phone, email, state) {
@@ -377,7 +408,6 @@ $(document).ready(function(){
         success: function(response) {
           $('.js-contact-modal-placeholder').html(response);
           $('.js-contact-address').html(address);
-          $('.js-contact-phone').html(phone);
           $('.js-contact-email').html(email);
           $('.js-contact-modal').addClass('is-completed');
         }
@@ -464,11 +494,3 @@ $(document).ready(function(){
 
 
 });
-
-function contactFinalRecaptchaCallback() {
- rasben.ContactModal.prototype._checkCaptcha('final');
-}
-
-function contactTldrRecaptchaCallback() {
- rasben.ContactModal.prototype._checkCaptcha('tldr');
-}
