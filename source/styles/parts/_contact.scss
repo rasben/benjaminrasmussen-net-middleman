@@ -6,6 +6,22 @@
   display: inline-block;
 } 
 
+.contact__captcha-button {
+  display: inline-block;
+  clear: both;
+  padding: 10px;
+  margin: 10px;
+  color: $color__background;
+  width: 50px;
+  cursor: pointer;
+
+  &.is-incorrect {
+    background-color: #c0392b;
+  }
+  &.is-correct {
+    background-color: #27ae60;
+  }
+}
 
 .contact__captcha-meta {
   font-size: 14px;

@@ -1,8 +1,16 @@
-<h3 class="contact__captcha-meta contact__language contact__language--da">For at undgå spam bliver jeg nødt til at spørge dig..</h2>
-<h2 class="contact__captcha-header contact__language contact__language--da">Er du en robot?</h1> 
-<h3 class="contact__captcha-meta contact__language contact__language--en">To avoid spam, I have to ask you..</h2>
-<h2 class="contact__captcha-header contact__language contact__language--en">Are you a robot?</h1> 
-<form class="js-captcha js-contact-captcha contact__captcha-form" action="javascript:alert(grecaptcha.getResponse());">
-  <div class="js-widget1 g-recaptcha contact__captcha-element" data-sitekey="6LfHNgsTAAAAAPQgvC8SasaW8-58c7xEqKVbmUue" data-callback="contactFinalRecaptchaCallback"></div>
-</form>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=onload" async defer></script>
+<div class="contact__language contact__language--da">
+  <h3 class="contact__captcha-meta">For at undgå spam bliver jeg nødt til at spørge dig..</h2>
+  <h2 class="contact__captcha-header">Er du en robot?</h1> 
+  <div class="js-captcha js-contact-captcha contact__captcha-form">
+    <div class="contact__captcha-button is-incorrect js-captcha-incorrect">Ja</div>
+    <div class="contact__captcha-button is-correct js-captcha-correct">Nej</div>
+  </div>
+</div>
+<div class="contact__language contact__language--en">
+  <h3 class="contact__captcha-meta">To avoid spam, I have to ask you..</h2>
+  <h2 class="contact__captcha-header">Are you a robot?</h1> 
+  <div class="js-captcha js-contact-captcha contact__captcha-form">
+    <div class="contact__captcha-button is-incorrect js-captcha-incorrect">Yes</div>
+    <div class="contact__captcha-button is-correct js-captcha-correct">No</div>
+  </div>
+</div>

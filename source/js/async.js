@@ -90,7 +90,7 @@ $(document).ready(function(){
       if (this.isPlaying == false) {
         if ((this._checkVisibilty(this.list)) == true) {
           this.startRocket();
-        }        
+        }
       }
     },
 
@@ -299,28 +299,30 @@ $(document).ready(function(){
       this.modalBody = this.element.find('.js-contact-modal-body');
       this.placeholder = this.element.find('.js-contact-modal-placeholder');
       this.contactModalOpen = false;
+      this.botDetected = false;
 
       this.element.find('.js-contact-modal-show').on('click',this.show.bind(this));
       this.element.find('.js-contact-modal-hide').on('click',this.hide.bind(this));
     },
 
     show : function(e) {
-      this.contactModalOpen = true;
+      if (!this.botDetected) {
+        this.contactModalOpen = true;
 
-      this._showCaptcha();
-      //todo - is this missing other places?
-      e.preventDefault();
-      $(this.modalBody).addClass('is-anim');
+        this._showCaptcha();
+        //todo - is this missing other places?
+        e.preventDefault();
+        $(this.modalBody).addClass('is-anim');
 
-      $(this.modalBody).addClass('is-active');
+        $(this.modalBody).addClass('is-active');
 
-      // Fix the 'this' issue
-      var that = this;
+        // Fix the 'this' issue
+        var that = this;
 
-      setTimeout(function(){        
-        $(that.modalBody).removeClass('is-anim');
-      }, 800); 
-
+        setTimeout(function(){        
+          $(that.modalBody).removeClass('is-anim');
+        }, 800); 
+      }
     },
 
     hide : function(e) {
@@ -332,84 +334,48 @@ $(document).ready(function(){
 
       setTimeout(function(){
         $(that.modalBody).removeClass('is-anim');
-      }, 800);      
+      }, 800);
 
       this.contactModalOpen = false;
-
-      clearInterval(this.checkCaptchaInterval);
-
-
     },
 
     _showCaptcha : function() {
       if (!($(this.element)).hasClass('is-completed')) {
-        if ($(this.element).hasClass('js-final')) {
-          var state = 'final';
-        }
-
-        else if ($(this.element).hasClass('js-tldr')) {
-          var state = 'tldr';
-        }
 
         var that = this
         $.ajax({
-          url: "script/captcha/templates/captcha-markup.html",
+          url: "/script/captcha/templates/captcha-markup.html",
           context: document.body,
           success: function(response){
             $(that.placeholder).html(response);
+            var correctElement = $(that.placeholder).find('.js-captcha-correct');
+            var incorrectElement = $(that.placeholder).find('.js-captcha-incorrect');
+
+            correctElement.on('click',that._showDetails.bind(that));
+            incorrectElement.on('click',that._botDisable.bind(that));
+
           }
         });
       }
 
-      this._checkCaptcha();
     },
 
-    _checkCaptcha : function(state) {
-      // TODO: Clean this up with a reCaptcha callback,
-      // instead of this awful hack.
-      var that = this;
+    _botDisable : function(e) {
+      this.botDetected = true;
 
-      this.checkCaptchaInterval = setInterval(function() {
-        grecaptchaResponse = grecaptcha.getResponse();
-
-        if (grecaptchaResponse) {
-
-          var interval = this;
-          $.post(
-            "script/captcha/",
-            { "g-recaptcha-response": grecaptchaResponse },
-            function(data) {
-
-              var response = JSON.parse(data);
-
-              if (response.success === true) {
-                clearInterval(interval);
-              }
-
-              that._showForm(response.address, response.phone, response.email, state);
-
-            }
-          );
-
-        }
-      }, 500);
-
-      var that = this;
-      // Fallback, to stop the interval.
-      setTimeout( function() { 
-        clearInterval(that.checkCaptchaInterval);
-      }, 60000);
+      this.hide(e);
     },
 
-    _showForm : function(address, phone, email, state) {
+    _showDetails : function() {
+      var that = this
+
       $.ajax({
-        url: "script/captcha/templates/card-markup.html",
+        url: "/script/captcha/templates/card-markup.php",
         context: document.body,
         success: function(response) {
-          $('.js-contact-modal-placeholder').html(response);
-          $('.js-contact-address').html(address);
-          $('.js-contact-email').html(email);
           $('.js-contact-modal').addClass('is-completed');
+          $(that.placeholder).html(response);
+
         }
       });
     },
